@@ -2,3 +2,4 @@ tavily-python
 flask
 flask_restx
 pyyaml
+requests
