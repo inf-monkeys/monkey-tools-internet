@@ -113,10 +113,41 @@ class TavilySearch(Resource):
                 },
             ],
             "x-monkey-tool-output": [
+                {"name": "answer", "displayName": "answer", "type": "string"},
+                {"name": "query", "displayName": "query", "type": "string"},
                 {
-                    "name": "name",
-                    "displayName": "知识库唯一标志",
+                    "name": "response_time",
+                    "displayName": "response_time",
+                    "type": "number",
+                },
+                {
+                    "name": "images",
+                    "displayName": "images",
                     "type": "string",
+                    "typeOptions": {"multipleValues": True},
+                },
+                {
+                    "name": "follow_up_questions",
+                    "displayName": "follow_up_questions",
+                    "type": "string",
+                    "typeOptions": {"multipleValues": True},
+                },
+                {
+                    "name": "results",
+                    "displayName": "results",
+                    "type": "json",
+                    "typeOptions": {"multipleValues": True},
+                    "properties": [
+                        {"name": "title", "displayName": "title", "type": "string"},
+                        {"name": "url", "displayName": "url", "type": "string"},
+                        {"name": "content", "displayName": "content", "type": "string"},
+                        {
+                            "name": "raw_content",
+                            "displayName": "raw_content",
+                            "type": "string",
+                        },
+                        {"name": "score", "displayName": "score", "type": "number"},
+                    ],
                 },
             ],
             "x-monkey-tool-extra": {
