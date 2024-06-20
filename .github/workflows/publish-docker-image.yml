@@ -49,4 +49,4 @@ jobs:
           RELEASE_TAG=${GITHUB_REF#refs/tags/}
           wget https://tos-tools.tos-cn-beijing.volces.com/linux/tosutil && chmod a+x tosutil
           ./tosutil config -i "$TOS_ACCESS_KEY_ID" -k "$TOS_SECRET_ACCESS_KEY" -e "$TOS_ENDPOINT_URL" -re "$TOS_REGION" 
-          ./tosutil cp monkeys-$RELEASE_TAG.tar.gz tos://$TOS_BUCKET/docker/monkeys/monkey-tools-internet/monkey-tools-internet-$RELEASE_TAG.tar.gz
+          ./tosutil cp monkey-tools-internet-$RELEASE_TAG.tar.gz tos://$TOS_BUCKET/docker/monkeys/monkey-tools-internet/monkey-tools-internet-$RELEASE_TAG.tar.gz
