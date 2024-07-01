@@ -16,18 +16,30 @@ class TavilySearch(Resource):
         {
             "x-monkey-tool-name": "search_by_tavily_ai",
             "x-monkey-tool-categories": ["query"],
-            "x-monkey-tool-display-name": "Tavily AI 搜索",
-            "x-monkey-tool-description": "使用 Tavily AI 进行搜索",
+            "x-monkey-tool-display-name": {
+                "zh-CN": "Tavily AI 搜索",
+                "en-US": "Search by Tavily AI",
+            },
+            "x-monkey-tool-description": {
+                "zh-CN": "使用 Tavily AI 进行搜索: https://docs.tavily.com/",
+                "en-US": "Search by Tavily AI: https://docs.tavily.com/",
+            },
             "x-monkey-tool-icon": "emoji:🌐:#ceefc5",
             "x-monkey-tool-input": [
                 {
-                    "displayName": "搜索关键词",
+                    "displayName": {
+                        "zh-CN": "搜索内容",
+                        "en-US": "Search query",
+                    },
                     "name": "query",
                     "type": "string",
                     "required": True,
                 },
                 {
-                    "displayName": "搜索深度",
+                    "displayName": {
+                        "zh-CN": "搜索深度",
+                        "en-US": "Search depth",
+                    },
                     "name": "search_depth",
                     "type": "options",
                     "options": [
@@ -44,7 +56,10 @@ class TavilySearch(Resource):
                     "required": False,
                 },
                 {
-                    "displayName": "搜索主题",
+                    "displayName": {
+                        "zh-CN": "搜索主题",
+                        "en-US": "Search topic",
+                    },
                     "name": "topic",
                     "type": "options",
                     "options": [
@@ -61,51 +76,78 @@ class TavilySearch(Resource):
                     "required": False,
                 },
                 {
-                    "displayName": "搜索天数",
+                    "displayName": {
+                        "zh-CN": "搜索天数",
+                        "en-US": "Search days",
+                    },
                     "name": "days",
                     "type": "number",
                     "default": 2,
                     "required": False,
                 },
                 {
-                    "displayName": "最大结果数",
+                    "displayName": {
+                        "zh-CN": "最大结果数",
+                        "en-US": "Search max results",
+                    },
                     "name": "max_results",
                     "type": "number",
                     "default": 5,
                     "required": False,
                 },
                 {
-                    "displayName": "限制域名搜索范围",
+                    "displayName": {
+                        "zh-CN": "限制域名搜索范围",   
+                        "en-US": "Include domains",
+                    },
                     "name": "include_domains",
                     "type": "string",
                     "required": False,
                     "default": "",
-                    "description": "只在这些域名中搜索，用逗号分隔",
+                    "description": {
+                        "zh-CN": "只在这些域名中搜索，用逗号分隔",
+                        "en-US": "Only search in those domain, seperated by comma",
+                    },
                 },
                 {
-                    "displayName": "排除域名",
+                    "displayName": {
+                        "zh-CN": "排除域名搜索范围",
+                        "en-US": "Exclude domains",
+                    },
                     "name": "exclude_domains",
                     "type": "string",
-                    "description": "排除域名，用逗号分隔",
+                    "description": {
+                        "zh-CN": "排除这些域名，用逗号分隔",
+                        "en-US": "Exclude those domain, seperated by comma",
+                    },
                     "required": False,
                     "default": "",
                 },
                 {
-                    "displayName": "是否包含答案",
-                    "name": "string",
+                    "displayName": {
+                        "zh-CN": "是否包含答案",
+                        "en-US": "Include answer",
+                    },
+                    "name": "include_answer",
                     "type": "boolean",
                     "required": False,
                     "default": False,
                 },
                 {
-                    "displayName": "是否包含原始内容",
+                    "displayName": {
+                        "zh-CN": "是否包含原始内容",
+                        "en-US": "Include raw content",
+                    },
                     "name": "include_raw_content",
                     "type": "boolean",
                     "required": False,
                     "default": False,
                 },
                 {
-                    "displayName": "是否包含图片",
+                    "displayName": {
+                        "zh-CN": "是否包含图片",
+                        "en-US": "Include images",
+                    },
                     "name": "include_images",
                     "type": "boolean",
                     "required": False,
