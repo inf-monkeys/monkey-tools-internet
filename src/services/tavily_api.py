@@ -1,4 +1,5 @@
 from flask import jsonify, request
+from requests import HTTPError
 from tavily import TavilyClient
 from flask_restx import Resource, fields
 from src.server.app import api
@@ -34,6 +35,10 @@ class TavilySearch(Resource):
                     "name": "query",
                     "type": "string",
                     "required": True,
+                    "description": {
+                        "zh-CN": "搜索内容，必须大于 5 个字符。",
+                        "en-US": "Search query, must be more than 5 characters.",
+                    }
                 },
                 {
                     "displayName": {
@@ -348,16 +353,24 @@ class TavilySearch(Resource):
         include_answer = data.get("include_answer", False)
         include_raw_content = data.get("include_raw_content", False)
         include_images = data.get("include_images", False)
-        response = tavily.search(
-            query=query,
-            search_depth=search_depth,
-            topic=topic,
-            days=days,
-            max_results=max_results,
-            include_domains=include_domains,
-            exclude_domains=exclude_domains,
-            include_answer=include_answer,
-            include_raw_content=include_raw_content,
-            include_images=include_images,
-        )
-        return jsonify(response)
+        
+        try:
+            response = tavily.search(
+                query=query,
+                search_depth=search_depth,
+                topic=topic,
+                days=days,
+                max_results=max_results,
+                include_domains=include_domains,
+                exclude_domains=exclude_domains,
+                include_answer=include_answer,
+                include_raw_content=include_raw_content,
+                include_images=include_images,
+            )
+            return jsonify(response)
+        except HTTPError as e:
+            json = e.response.json()
+            message = json.get("detail", {}).get('error', [])[0];
+            raise Exception(message)
+        except Exception as e:
+            raise Exception(str(e))
