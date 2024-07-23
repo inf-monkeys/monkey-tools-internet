@@ -370,7 +370,7 @@ class TavilySearch(Resource):
             return jsonify(response)
         except HTTPError as e:
             json = e.response.json()
-            message = json.get("detail", {}).get('error', [])[0];
+            message = json.get("detail", {}).get('error', []);
             raise Exception(message)
         except Exception as e:
             raise Exception(str(e))

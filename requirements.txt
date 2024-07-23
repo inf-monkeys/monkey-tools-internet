@@ -1,4 +1,4 @@
-tavily-python
+tavily-python==0.3.3
 flask
 flask_restx
 pyyaml
