@@ -344,6 +344,16 @@ class TavilySearch(Resource):
 
         data = request.get_json()
         query = data.get("query")
+        
+        if not query:
+            raise ValueError("Query is required")
+        
+        if not isinstance(query, str):
+            raise ValueError("Query should be a string")
+        
+        if len(query) < 5:
+            query += " " * (5 - len(query))
+        
         search_depth = data.get("search_depth", "basic")
         topic = data.get("topic", "general")
         days = data.get("days", 2)
